@@ -2,7 +2,11 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+      {{#if styles}}
+          {{#each styles}}
+              <link href="{{.}}" rel="stylesheet">
+          {{/each}}
+      {{/if}}
       {{#if service}}
           <script>
               window.expanse = {
@@ -13,5 +17,10 @@
   </head>
   <body>
     {{{body}}}
+    {{#if scripts}}
+        {{#each scripts}}
+            <script src="{{.}}"></script>
+        {{/each}}
+    {{/if}}
   </body>
 </html>

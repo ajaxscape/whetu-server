@@ -5,11 +5,13 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
+const webpack = require('./middleware/webpack')
 const index = require('./routes/index')
 const single = require('./routes/single')
 const multi = require('./routes/multi')
 
 const app = express()
+const public_dir = path.join(__dirname, '../../public')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -21,7 +23,8 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(process.cwd(), 'public')))
+app.use(express.static(public_dir))
+app.use(webpack(public_dir))
 
 app.use('/', index)
 app.use('/single', single)
