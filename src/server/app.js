@@ -7,8 +7,8 @@ const bodyParser = require('body-parser')
 const sassMiddleware = require('node-sass-middleware')
 
 const index = require('./routes/index')
-const single = require('./routes/single')
-const multi = require('./routes/multi')
+const single = require('./routes/single-player')
+const multi = require('./routes/multi-player')
 
 const app = express()
 

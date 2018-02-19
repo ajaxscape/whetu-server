@@ -3,16 +3,58 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "clean": "shx rm -rf public/**",
+    "build": "set NODE_ENV=production && node_modules/webpack/bin/webpack.js -p --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
+  },
+  "standard": {
+    "globals": [
+      "location",
+      "self",
+      "WebSocket"
+    ]
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
-    "node-sass-middleware": "0.9.8",
-    "serve-favicon": "~2.4.5"
-  }
+    "serve-favicon": "~2.4.5",
+    "uuid": "^3.1.0",
+    "whetu-engine": "^0.1.1",
+    "whetu-render": "^0.1.2",
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "shx": "^0.2.2",
+    "standard": "^10.0.3",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.10.0",
+    "webpack-config-utils": "^2.3.0",
+    "worker-loader": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaxscape/whetu-server.git"
+  },
+  "author": "Ben Surgison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajaxscape/whetu-server/issues"
+  },
+  "homepage": "https://github.com/ajaxscape/whetu-server#readme"
 }

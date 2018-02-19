@@ -3,8 +3,12 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-      {{#if page}}
-          <script src="/javascripts/{{page}}"></script>
+      {{#if service}}
+          <script>
+              window.expanse = {
+                  config: '{{service}}'
+              }
+          </script>
       {{/if}}
   </head>
   <body>
