@@ -2,22 +2,21 @@ const path = require('path')
 const webpack = require('webpack')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
-const nodeEnv = process.env.NODE_ENV || 'development'
+const HashAssetsPlugin = require('hash-assets-webpack-plugin')
+const nodeEnv = process.env.NODE_ENV || 'production'
 const {ifDevelopment, ifProduction} = getIfUtils(nodeEnv)
 
 module.exports = removeEmpty({
   entry: {
-    multi: './src/client/multi-player.js',
-    single: './src/client/single-player.js',
-    css: './src/client/index.scss'
+    'multi': './src/client/multi.js',
+    'single': './src/client/single.js',
+    'css': './src/client/index.scss'
   },
 
   output: {
-    filename: ifProduction('whetu-[name].[hash].js', 'whetu-[name].js'),
-    path: path.resolve(__dirname, 'public')
+    path: path.join(__dirname, "public"),
+    filename: "[name].[chunkhash].js",
+    publicPath: "/public/"
   },
 
   module: {
@@ -43,7 +42,7 @@ module.exports = removeEmpty({
         use: {
           loader: 'worker-loader',
           options: {
-            name: ifProduction('whetu-engine.[hash].js', 'whetu-engine.js')
+            name: ifProduction('whetu-engine.[chunkhash].js', 'whetu-engine.js')
           }
         }
       }
@@ -65,12 +64,24 @@ module.exports = removeEmpty({
       }
     }),
 
-    new CopyWebpackPlugin([{from: 'src/client/assets', to: 'assets'}]),
-
     ifProduction(
-      new ExtractTextPlugin('whetu-[name].[hash].css'),
-      new ExtractTextPlugin('whetu-[name].css')
-    )
+      new ExtractTextPlugin('[name].[hash].css'),
+      new ExtractTextPlugin('[name].css')
+    ),
+
+    ifProduction(new HashAssetsPlugin({
+      path: './public',
+      chunkNameTemplate: '[name].js',
+      srcPath: './src',
+      srcMatch: {
+        'home.tpl': /['"]([^'"]+\.(?:png|jpg))['"]/gi
+      },
+      assetMatch: {
+        css: /\(['"]?([^()]+\.(?:gif|png|jpg))['"]?\)/gi
+      },
+      assetNameTemplate: '[name].[hash]',
+      prettyPrint: true
+    }))
   ]),
 
   node: {
