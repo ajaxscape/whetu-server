@@ -3,9 +3,10 @@ const webpack = require('webpack')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const nodeEnv = process.env.NODE_ENV || 'production'
+const nodeEnv = process.env.NODE_ENV || 'development'
 const {ifDevelopment, ifProduction} = getIfUtils(nodeEnv)
 
 module.exports = removeEmpty({
