@@ -1,4 +1,5 @@
-require('babel-polyfill')
+// require('babel-polyfill')
+require('regenerator-runtime/runtime')
 const game = require('whetu-engine')
 
 game.start()
