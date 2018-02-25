@@ -13,6 +13,7 @@ module.exports = removeEmpty({
   entry: {
     multi: './src/client/multi-player.js',
     single: './src/client/single-player.js',
+    'single-ww': './src/client/single-ww-player.js',
     css: './src/client/index.scss'
   },
 

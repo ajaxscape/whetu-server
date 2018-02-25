@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const webpack = require('./middleware/webpack')
 const index = require('./routes/index')
 const single = require('./routes/single')
+const singleWW = require('./routes/single-ww')
 const multi = require('./routes/multi')
 
 const app = express()
@@ -28,6 +29,7 @@ app.use(webpack(public_dir))
 
 app.use('/', index)
 app.use('/single', single)
+app.use('/single-ww', singleWW)
 app.use('/multi', multi)
 
 // catch 404 and forward to error handler
