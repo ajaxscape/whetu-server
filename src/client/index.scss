@@ -148,9 +148,22 @@ body {
 
 #score {
   position: absolute;
+  top: 1em;
+  left: 1em;
   color: yellow;
   font-size: 4em;
   #score-val {
+    font-weight: bold;
+  }
+}
+
+#location {
+  position: absolute;
+  top: 3em;
+  left: 1em;
+  color: orange;
+  font-size: 2em;
+  #location-val {
     font-weight: bold;
   }
 }

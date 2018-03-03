@@ -12,7 +12,7 @@ const singleWW = require('./routes/single-ww')
 const multi = require('./routes/multi')
 
 const app = express()
-const public_dir = path.join(__dirname, '../../public')
+const publicDir = path.join(__dirname, '../../public')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -24,8 +24,8 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(public_dir))
-app.use(webpack(public_dir))
+app.use(express.static(publicDir))
+app.use(webpack(publicDir))
 
 app.use('/', index)
 app.use('/single', single)
