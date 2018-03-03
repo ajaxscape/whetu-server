@@ -123,16 +123,16 @@ body {
 }
 
 #multi-player-link {
-  top: 1em;
+  top: 1rem;
 }
 
 #single-player-link {
-  top: 3em;
+  top: 3rem;
 }
 
 .game-link {
   position: absolute;
-  right: 1em;
+  right: 1rem;
 }
 
 #info {
@@ -148,10 +148,10 @@ body {
 
 #score {
   position: absolute;
-  top: 1em;
-  left: 1em;
+  top: 1rem;
+  left: 1rem;
   color: yellow;
-  font-size: 4em;
+  font-size: 4rem;
   #score-val {
     font-weight: bold;
   }
@@ -159,10 +159,10 @@ body {
 
 #location {
   position: absolute;
-  top: 3em;
-  left: 1em;
+  top: 5rem;
+  left: 1rem;
   color: orange;
-  font-size: 2em;
+  font-size: 2rem;
   #location-val {
     font-weight: bold;
   }
