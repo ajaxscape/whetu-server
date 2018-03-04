@@ -86,7 +86,31 @@ body {
             box-shadow: 0 50px 60px rgba(150, 0, 255, 0.5);
           }
           &::before {
+            background-image: url("assets/images/floating-objects/alien-1.png");
+          }
+        }
+        &.creepy {
+          &.after-burner {
+            box-shadow: 0 50px 60px rgba(150, 0, 255, 0.5);
+          }
+          &::before {
             background-image: url("assets/images/floating-objects/alien-2.png");
+          }
+        }
+        &.ghostly {
+          &.after-burner {
+            box-shadow: 0 50px 60px rgba(150, 0, 255, 0.5);
+          }
+          &::before {
+            background-image: url("assets/images/floating-objects/alien-3.png");
+          }
+        }
+        &.eerie {
+          &.after-burner {
+            box-shadow: 0 50px 60px rgba(150, 0, 255, 0.5);
+          }
+          &::before {
+            background-image: url("assets/images/floating-objects/alien-4.png");
           }
         }
       }
