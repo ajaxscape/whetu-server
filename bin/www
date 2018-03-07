@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+const opbeat = require('opbeat').start()
 const app = require('../src/server/app')
 const debug = require('debug')('whetu-server:server')
 const http = require('http')
