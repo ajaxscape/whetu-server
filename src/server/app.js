@@ -27,8 +27,6 @@ app.use(cookieParser())
 app.use(express.static(publicDir))
 app.use(webpack(publicDir))
 
-app.use(opbeat.middleware.express())
-
 app.use('/', index)
 app.use('/single', single)
 app.use('/single-ww', singleWW)
